@@ -23,7 +23,7 @@ bool Company::DeleteBus2(int  number)
     if(i==size)
     {
         cout<<"未找到该车信息,无法删除!"<<endl;
-        return false;
+        return false
     }
     return false;
 }
