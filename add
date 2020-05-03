@@ -1,0 +1,87 @@
+bool Company::AddBus1(int number,char *name,char *type,char *start,char *terminal)
+{
+    int i;
+    Bus *bb;
+    bb= new Bus(number,name,type,start,terminal);
+    for(i=0; i<size; i++)
+    {
+        bus1=bus[i];
+        if(strcmp(bus1->name,name)==0)
+        {
+            if(strcmp(bus1->type,type)==0)
+            {
+                if(strcmp(bus1->start,start)==0)
+                {
+                    if(strcmp(bus1->terminal,terminal)==0)
+                    {
+                        cout<<"此公交车信息已存在，录入失败!"<<endl;
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    if(i==size)
+    {
+        bus[size]=bb;
+        size++;
+        cout<<"车辆信息录入成功!"<<endl;
+        return true;
+    }
+    else
+        return false;
+}
+ 
+void Company::AddBus()   //增加车辆
+{
+    /*
+    Company类的函数，用于判断输入的车辆信息是否重复，并将没有重复的信息增加到信息总表中去
+    */
+    int number22;       //编号
+    char name22[10];    //名称（即路线）
+    char type22[10];    //车型
+    char start22[10];   //起点站
+    char terminal22[10];//终点站
+    int type;
+    char ty[10];
+    cout<<"-->>添加车辆"<<endl;
+    cout<<"您正在增加车辆"<<endl;
+    cout<<"请输入车辆编号："<<endl;
+    cin>>number22;
+    cout<<"请输入车辆名称："<<endl;
+    cin>>name22;
+    cout<<"请输入车辆类型："<<endl;
+    cout<<"0.其他 1.普通车 2.空调车 3.双层车"<<endl;
+    cin>>type;
+    switch(type)
+    {
+    case 0:
+        strcpy(ty,"其他类型");
+        strcpy(type22,ty);
+        break;
+    case 1:
+        strcpy(ty,"普通车");
+        strcpy(type22,ty);
+        break;
+    case 2:
+        strcpy(ty,"空调车");
+        strcpy(type22,ty);
+        break;
+    case 3:
+        strcpy(ty,"双层车");
+        strcpy(type22,ty);
+        break;
+    default:
+        cout<<"输入有误！"<<endl;
+        AddBus();
+    }
+    cout<<"请输入车辆起点："<<endl;
+    cin>>start22;
+    cout<<"请输入车辆终点："<<endl;
+    cin>>terminal22;
+    AddBus1(number22,name22,type22,start22,terminal22);
+    cout<<"请按任意键继续..."<<endl;
+    fflush(stdin);
+    getchar();
+    Keyboard_entry();
+}
