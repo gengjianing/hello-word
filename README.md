@@ -1,45 +1,31 @@
 # hello-word
-bool Company::DeleteBus2(int  number)
+bool Company::FindBusNam1(char *name1)
 {
-    int i;
-    for(i=0; i<size; i++)
+    for(int i=0; i<size; i++)
     {
         bus1=bus[i];
-        if(bus1->number==number)
+        if(strcmp(bus1->name,name1)==0)
         {
-            for(int j=i; j<size; j++)
-            {
-                bus1=bus[j];
-                (bus1->number)--;
-                bus[j]=bus[j+1];
-                if(j==size-1)
-                    number=bus1->number ;
-            }
-            cout<<"该车信息已删除!"<<endl;
-            size--;
+            cout<<"路线名称为"<<bus1->name<<"的公交车的信息为："<<endl;
+            cout<<setiosflags(ios::left)<<"          *         "<<setw(8)<<"编号"<<setw(8)<<"名称"<<setw(8)<<"类型"<<setw(8)<<"起点站"<<setw(8)<<"终点站"<<"*"<<endl;
+            cout<<setiosflags(ios::left)<<"          *         "<<setw(8)<<bus1->number<<setw(8)<<bus1->name<<setw(8)<<bus1->type<<setw(8)<<bus1->start<<setw(8)<<bus1->terminal<<setw(8)<<"*"<<endl;
             return true;
         }
+        if(i==size)
+        {
+            cout<<"无该车任何信息！"<<endl;
+            return false;
+        }
+        return false;
     }
-    if(i==size)
-    {
-        cout<<"未找到该车信息,无法删除!"<<endl;
-        return false
-    }
-    return false;
 }
  
-void Company::DeleteBus()     //删除车辆
+void Company::FindBusNam()      //判断车辆信息是否存在,查找车辆
 {
-    /*
-    Company类的函数，根据用户输入的车辆名称判断车辆信息是否存在，
-    若存在，查找并显示所有此名称的车辆，再提示用户根据显示出的车辆信息选择要删车的车辆
-    */
-    int num;
-    cout<<"-->>删除车辆"<<endl;
-    show();
-    cout<<"请选择要删除的车辆的编号："<<endl;
-    cin>>num;
-    DeleteBus2(num);
+    char name11[10];
+    cout<<"请输入要查找车辆的名称："<<endl;
+    cin>>name11;
+    FindBusNam1(name11);
     cout<<"请按任意键继续..."<<endl;
     fflush(stdin);
     getchar();
