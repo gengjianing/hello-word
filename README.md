@@ -21,7 +21,7 @@ bool Company::FindBusNam1(char *name1)
     }
 }
  
-void Company::FindBusNam()      //判断车辆信息是否存在,查找车辆
+void Company::FindBusNam()      //判断车辆信息是否存在，查找车辆
 {
     char name11[10];
     cout<<"请输入要查找车辆的名称："<<endl;
