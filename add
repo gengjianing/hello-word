@@ -85,3 +85,4 @@ void Company::AddBus()   //增加车辆
     getchar();
     Keyboard_entry();
 }
+
